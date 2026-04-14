@@ -1,0 +1,348 @@
+<!doctype html>
+<html lang="ru">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>BeerHeves ERP | GitHub Pages Preview</title>
+    <style>
+        :root {
+            --color-primary: #ffc107;
+            --color-primary-hover: #e0aa00;
+            --color-secondary: #343a40;
+            --color-secondary-soft: #6c757d;
+            --color-bg: #f8f9fa;
+            --color-surface: #ffffff;
+            --color-border: #dee2e6;
+        }
+
+        * { box-sizing: border-box; }
+
+        body {
+            margin: 0;
+            font-family: "Segoe UI", sans-serif;
+            color: var(--color-secondary);
+            background:
+                radial-gradient(circle at top left, rgba(255, 193, 7, 0.18), transparent 28%),
+                linear-gradient(180deg, #ffffff 0%, var(--color-bg) 100%);
+        }
+
+        .container {
+            width: min(1160px, calc(100% - 32px));
+            margin: 0 auto;
+        }
+
+        .hero {
+            padding: 72px 0 44px;
+        }
+
+        .hero-grid {
+            display: grid;
+            grid-template-columns: 1.1fr 0.9fr;
+            gap: 24px;
+            align-items: center;
+        }
+
+        .eyebrow {
+            display: inline-flex;
+            gap: 10px;
+            align-items: center;
+            padding: 8px 14px;
+            border-radius: 999px;
+            background: rgba(255, 193, 7, 0.16);
+            color: #725800;
+            font-weight: 600;
+        }
+
+        h1 {
+            margin: 18px 0 12px;
+            font-size: clamp(2.2rem, 5vw, 4.2rem);
+            line-height: 1;
+        }
+
+        .lead {
+            margin: 0 0 26px;
+            color: var(--color-secondary-soft);
+            font-size: 1.05rem;
+            line-height: 1.65;
+            max-width: 62ch;
+        }
+
+        .actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 13px 18px;
+            border-radius: 14px;
+            border: 1px solid transparent;
+            font-weight: 700;
+            text-decoration: none;
+            transition: transform .18s ease, background-color .18s ease, border-color .18s ease;
+        }
+
+        .btn:hover {
+            transform: translateY(-1px);
+        }
+
+        .btn-primary {
+            background: var(--color-primary);
+            color: #1f2327;
+        }
+
+        .btn-primary:hover {
+            background: var(--color-primary-hover);
+        }
+
+        .btn-secondary {
+            background: #ffffff;
+            color: var(--color-secondary);
+            border-color: var(--color-border);
+        }
+
+        .panel,
+        .card {
+            background: var(--color-surface);
+            border: 1px solid rgba(52, 58, 64, 0.08);
+            border-radius: 24px;
+            box-shadow: 0 16px 42px rgba(52, 58, 64, 0.08);
+        }
+
+        .panel {
+            padding: 24px;
+        }
+
+        .preview-shell {
+            overflow: hidden;
+        }
+
+        .preview-topbar {
+            padding: 14px 18px;
+            background: var(--color-secondary);
+            color: #ffffff;
+            font-weight: 700;
+        }
+
+        .preview-content {
+            display: grid;
+            grid-template-columns: 200px 1fr;
+            min-height: 360px;
+        }
+
+        .preview-sidebar {
+            background: #2f353b;
+            color: rgba(255,255,255,0.75);
+            padding: 18px;
+        }
+
+        .preview-sidebar div {
+            padding: 12px 14px;
+            border-radius: 12px;
+            margin-bottom: 8px;
+        }
+
+        .preview-sidebar .active {
+            background: rgba(255, 193, 7, 0.18);
+            color: #ffffff;
+        }
+
+        .preview-main {
+            padding: 22px;
+            background: #fcfcfd;
+        }
+
+        .metric-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 12px;
+            margin-bottom: 14px;
+        }
+
+        .metric {
+            padding: 16px;
+            border-radius: 18px;
+            background: linear-gradient(180deg, #ffffff 0%, #f8f9fa 100%);
+            border: 1px solid rgba(52, 58, 64, 0.08);
+        }
+
+        .metric strong {
+            display: block;
+            font-size: 1.4rem;
+            margin-top: 8px;
+        }
+
+        .notice {
+            margin-top: 28px;
+            padding: 16px 18px;
+            border-left: 4px solid var(--color-primary);
+            background: rgba(255, 193, 7, 0.12);
+            border-radius: 16px;
+            font-size: 0.98rem;
+        }
+
+        .section {
+            padding: 16px 0 56px;
+        }
+
+        .section h2 {
+            margin: 0 0 18px;
+            font-size: 1.8rem;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 16px;
+        }
+
+        .card {
+            padding: 20px;
+        }
+
+        .card h3 {
+            margin: 0 0 12px;
+            font-size: 1.05rem;
+        }
+
+        .card p,
+        li {
+            color: var(--color-secondary-soft);
+            line-height: 1.6;
+        }
+
+        .steps {
+            padding-left: 18px;
+            margin: 0;
+        }
+
+        footer {
+            padding: 0 0 56px;
+            color: var(--color-secondary-soft);
+        }
+
+        code {
+            background: rgba(52, 58, 64, 0.08);
+            padding: 2px 6px;
+            border-radius: 8px;
+        }
+
+        @media (max-width: 960px) {
+            .hero-grid,
+            .grid,
+            .preview-content,
+            .metric-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+<main>
+    <section class="hero">
+        <div class="container hero-grid">
+            <div>
+                <div class="eyebrow">GitHub Pages Preview</div>
+                <h1>BeerHeves ERP</h1>
+                <p class="lead">
+                    Это статическая preview-страница для GitHub Pages. Основное приложение остается PHP + MySQL
+                    и должно запускаться на хостинге, который поддерживает backend и базу данных.
+                </p>
+                <div class="actions">
+                    <a class="btn btn-primary" href="#deploy">Как развернуть backend</a>
+                    <a class="btn btn-secondary" href="#features">Что есть в проекте</a>
+                </div>
+                <div class="notice">
+                    GitHub Pages подходит только для этой статической витрины или документации.
+                    Полноценный вход, документы, сканирование и работа с остатками требуют PHP-runtime и MySQL.
+                </div>
+            </div>
+
+            <div class="panel preview-shell">
+                <div class="preview-topbar">BeerHeves ERP / Dashboard</div>
+                <div class="preview-content">
+                    <div class="preview-sidebar">
+                        <div class="active">Dashboard</div>
+                        <div>Товары</div>
+                        <div>Документы</div>
+                        <div>Сканирование</div>
+                        <div>Отчеты</div>
+                    </div>
+                    <div class="preview-main">
+                        <div class="metric-grid">
+                            <div class="metric">Товары<strong>245</strong></div>
+                            <div class="metric">Документы<strong>18</strong></div>
+                            <div class="metric">Продажи<strong>$1,240</strong></div>
+                        </div>
+                        <div class="panel">
+                            <strong>Сканирование barcode</strong>
+                            <p>USB/Bluetooth scanner -> input -> Enter -> AJAX lookup -> строка документа.</p>
+                            <p><code>5449000000996</code> -> Coca-Cola 0.5L -> qty +1</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section" id="features">
+        <div class="container">
+            <h2>Что есть в проекте</h2>
+            <div class="grid">
+                <article class="card">
+                    <h3>Backend MVP</h3>
+                    <p>Чистый PHP 8.2+, MVC-подход, PDO prepared statements, session auth, CSRF, document service, stock balances, logs.</p>
+                </article>
+                <article class="card">
+                    <h3>UI и scanner flow</h3>
+                    <p>Bootstrap 5, yellow/gray theme, отдельная scan-page, визуальный и звуковой feedback, quick-create товара из modal.</p>
+                </article>
+                <article class="card">
+                    <h3>GitHub-ready</h3>
+                    <p><code>.gitignore</code>, <code>.env.example</code>, GitHub Pages preview, workflow для публикации <code>docs/</code>.</p>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <section class="section" id="deploy">
+        <div class="container">
+            <h2>Как использовать этот репозиторий</h2>
+            <div class="grid">
+                <article class="card">
+                    <h3>1. GitHub</h3>
+                    <ol class="steps">
+                        <li>Создайте новый репозиторий.</li>
+                        <li>Загрузите проект в <code>main</code>.</li>
+                        <li>При необходимости создайте файл <code>.env</code> на сервере из <code>.env.example</code>.</li>
+                    </ol>
+                </article>
+                <article class="card">
+                    <h3>2. GitHub Pages</h3>
+                    <ol class="steps">
+                        <li>Включите Pages для репозитория.</li>
+                        <li>Используйте GitHub Actions как source.</li>
+                        <li>На Pages будет открываться эта статическая preview-страница из <code>docs/</code>.</li>
+                    </ol>
+                </article>
+                <article class="card">
+                    <h3>3. Реальный backend deploy</h3>
+                    <ol class="steps">
+                        <li>Размещайте PHP-часть на хостинге с PHP 8.2+ и MySQL.</li>
+                        <li>Document root должен смотреть в <code>public/</code>.</li>
+                        <li>Импортируйте <code>database/schema.sql</code> и <code>database/seed.sql</code>.</li>
+                    </ol>
+                </article>
+            </div>
+        </div>
+    </section>
+</main>
+
+<footer class="container">
+    BeerHeves ERP Preview. Pages = static preview, hosting = PHP/MySQL runtime.
+</footer>
+</body>
+</html>

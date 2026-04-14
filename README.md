@@ -18,6 +18,11 @@ public/
     css/theme.css
     js/app.js
     js/scanner.js
+.github/
+  workflows/pages.yml
+docs/
+  index.html
+.env.example
 storage/logs/
 ```
 
@@ -65,6 +70,39 @@ php -S localhost:8000 -t public
 ```text
 http://localhost:8000
 ```
+
+## GitHub upload
+
+1. Создайте репозиторий на GitHub.
+2. Добавьте в корне локальный `.env` на основе `.env.example`.
+3. Убедитесь, что в репозиторий не попадают секреты: `.gitignore` уже исключает `.env` и runtime-логи.
+4. Загрузите проект в ветку `main`.
+
+## GitHub Pages
+
+В репозитории уже есть статическая preview-страница в `docs/index.html` и workflow `.github/workflows/pages.yml`.
+
+Важно:
+
+- GitHub Pages не исполняет PHP.
+- GitHub Pages не дает MySQL.
+- Поэтому на Pages будет открываться только статическая витрина проекта, а не рабочий backend.
+
+Чтобы включить Pages:
+
+1. Откройте `Settings -> Pages`.
+2. Выберите source `GitHub Actions`.
+3. После push в `main` workflow задеплоит содержимое `docs/`.
+
+## Где размещать рабочее приложение
+
+Полный PHP backend размещайте на хостинге с:
+
+- PHP 8.2+
+- MySQL
+- document root -> `public/`
+
+Подойдут любой VPS, shared hosting с PHP/MySQL, либо платформы вроде Render/Railway/Cloud hosting с PHP runtime.
 
 ## Демо-пользователи
 
