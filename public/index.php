@@ -31,7 +31,12 @@ spl_autoload_register(static function (string $class): void {
 });
 
 set_exception_handler(static function (Throwable $exception): void {
-    $logFile = base_path('storage/logs/app.log');
+    $logDir = base_path('storage/logs');
+    if (!is_dir($logDir)) {
+        @mkdir($logDir, 0775, true);
+    }
+
+    $logFile = $logDir . DIRECTORY_SEPARATOR . 'app.log';
     $message = sprintf(
         "[%s] %s in %s:%d\n%s\n\n",
         date('Y-m-d H:i:s'),
@@ -40,7 +45,12 @@ set_exception_handler(static function (Throwable $exception): void {
         $exception->getLine(),
         $exception->getTraceAsString()
     );
-    file_put_contents($logFile, $message, FILE_APPEND);
+
+    if (is_dir($logDir) && is_writable($logDir)) {
+        file_put_contents($logFile, $message, FILE_APPEND);
+    } else {
+        error_log($message);
+    }
 
     http_response_code(500);
     echo '<h1>Server Error</h1><p>Произошла ошибка. Проверьте storage/logs/app.log.</p>';
