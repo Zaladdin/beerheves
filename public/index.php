@@ -2,6 +2,10 @@
 
 declare(strict_types=1);
 
+require dirname(__DIR__) . '/app/Core/Env.php';
+
+\App\Core\Env::load(dirname(__DIR__) . '/.env');
+
 $config = require dirname(__DIR__) . '/config/config.php';
 
 date_default_timezone_set($config['app']['timezone']);
